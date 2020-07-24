@@ -36,13 +36,19 @@ func get(url string) {
 
 func TestLongShort(t *testing.T) {
 	go func() {
-		for i := 0; i < 1000; i++ {
+		for i := 0; i < 100; i++ {
+			if i%10 == 0 {
+				time.Sleep(time.Second)
+			}
 			go get("http://192.168.33.10:8087")
 		}
 	}()
 
 	go func() {
-		for i := 0; i < 1000; i++ {
+		for i := 0; i < 100; i++ {
+			if i%10 == 0 {
+				time.Sleep(time.Second)
+			}
 			go get("http://192.168.33.10:8088")
 		}
 	}()
@@ -74,7 +80,10 @@ func TestLongLong(t *testing.T) {
 
 func TestLong(t *testing.T) {
 	go func() {
-		for i := 0; i < 1000; i++ {
+		for i := 0; i < 100; i++ {
+			if i%10 == 0 {
+				time.Sleep(time.Second)
+			}
 			go get("http://192.168.33.10:8087")
 		}
 	}()
